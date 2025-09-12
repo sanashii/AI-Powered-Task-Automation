@@ -82,5 +82,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-/* Minimal extra styling; Tailwind handles most of it */
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9fafb;
+    }
 </style>
