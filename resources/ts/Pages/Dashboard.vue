@@ -1,24 +1,59 @@
-<script setup lang="ts">
-defineProps<{
-  user: { name: string; role: string }
-  stats: { tasks_completed: number; projects_active: number }
-}>()
-</script>
-
 <template>
   <div class="p-6">
-    <h1 class="text-2xl font-bold">Welcome back, {{ user.name }} 👋</h1>
-    <p class="text-gray-600">Your role: {{ user.role }}</p>
+    <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
 
-    <div class="mt-6 grid grid-cols-2 gap-4">
-      <div class="p-4 bg-white rounded-xl shadow">
-        <h2 class="font-semibold">Tasks Completed</h2>
-        <p class="text-xl">{{ stats.tasks_completed }}</p>
+    <!-- Summary Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
+      <!-- Pending Tasks -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-xl font-semibold mb-2">Pending Tasks</h2>
+        <p class="text-2xl font-bold">{{ taskCounts.pending }}</p>
       </div>
-      <div class="p-4 bg-white rounded-xl shadow">
-        <h2 class="font-semibold">Active Projects</h2>
-        <p class="text-xl">{{ stats.projects_active }}</p>
+
+      <!-- In Progress -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-xl font-semibold mb-2">In Progress</h2>
+        <p class="text-2xl font-bold">{{ taskCounts.in_progress }}</p>
+      </div>
+
+      <!-- Done -->
+      <div class="bg-white shadow rounded p-4">
+        <h2 class="text-xl font-semibold mb-2">Done</h2>
+        <p class="text-2xl font-bold">{{ taskCounts.done }}</p>
+      </div>
+    </div>
+
+    <!-- Priority Summary -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-blue-50 shadow rounded p-4">
+        <h2 class="text-lg font-semibold mb-2">High Priority</h2>
+        <p class="text-xl font-bold">{{ priorityCounts.high }}</p>
+      </div>
+
+      <div class="bg-yellow-50 shadow rounded p-4">
+        <h2 class="text-lg font-semibold mb-2">Medium Priority</h2>
+        <p class="text-xl font-bold">{{ priorityCounts.medium }}</p>
+      </div>
+
+      <div class="bg-green-50 shadow rounded p-4">
+        <h2 class="text-lg font-semibold mb-2">Low Priority</h2>
+        <p class="text-xl font-bold">{{ priorityCounts.low }}</p>
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  props: {
+    taskCounts: Object,
+    priorityCounts: Object,
+  },
+});
+</script>
+
+<style scoped>
+/* Optional: additional styling if you want */
+</style>

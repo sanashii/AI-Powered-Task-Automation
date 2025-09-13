@@ -1,6 +1,7 @@
 import '../css/app.css';
 import './bootstrap';
 
+import { Page } from '@inertiajs/core'; // if you installed @inertiajs/core
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h, DefineComponent } from 'vue';
