@@ -5,13 +5,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-
-// TEST AREA --------------------------------------------------------
-Route::get('/test', function () {
-    return Inertia::render('TestPage');
-});
-// END TEST AREA ----------------------------------------------------
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

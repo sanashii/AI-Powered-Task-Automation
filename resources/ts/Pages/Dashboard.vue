@@ -1,30 +1,24 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+<script setup lang="ts">
+defineProps<{
+  user: { name: string; role: string }
+  stats: { tasks_completed: number; projects_active: number }
+}>()
 </script>
 
 <template>
-    <Head title="Dashboard" />
+  <div class="p-6">
+    <h1 class="text-2xl font-bold">Welcome back, {{ user.name }} 👋</h1>
+    <p class="text-gray-600">Your role: {{ user.role }}</p>
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800"
-            >
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div
-                    class="overflow-hidden bg-white shadow-sm sm:rounded-lg"
-                >
-                    <div class="p-6 text-gray-900">
-                        You're logged in!
-                    </div>
-                </div>
-            </div>
-        </div>
-    </AuthenticatedLayout>
+    <div class="mt-6 grid grid-cols-2 gap-4">
+      <div class="p-4 bg-white rounded-xl shadow">
+        <h2 class="font-semibold">Tasks Completed</h2>
+        <p class="text-xl">{{ stats.tasks_completed }}</p>
+      </div>
+      <div class="p-4 bg-white rounded-xl shadow">
+        <h2 class="font-semibold">Active Projects</h2>
+        <p class="text-xl">{{ stats.projects_active }}</p>
+      </div>
+    </div>
+  </div>
 </template>
